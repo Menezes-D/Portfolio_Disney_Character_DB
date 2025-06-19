@@ -1,6 +1,6 @@
 /******************************************************************************************************
  * Objetivo: API para Registrar dados de personagens da empresa Walt Disney, realizar CRUD completo.
- * Data: 05/06/2024
+ * Data: 05/06/2025
  * Autor: Douglas Menezes
  * Versão: 1.0
  ********************************************************************************************************/
