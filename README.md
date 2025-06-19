@@ -24,13 +24,21 @@ Body-Parser (Para interpretar dados do corpo das requisições)
 
 O projeto segue a arquitetura MVC (Model - View - Controller) combinada com o padrão RESTful, o que proporciona uma organização clara e escalável da aplicação.
  
+ 
 📁 /controller → Camada responsável pela lógica de negócio
+
 📁 /model → DAO (Data Access Object) com comandos SQL
+
 📁 /routes → Definição das rotas da API
+
 📁 /modulo → Arquivos auxiliares e mensagens padrão
+
 📁 /database → Script de criação do banco e tabelas
+
 📁 /prisma → Configuração do ORM Prisma
+
 📄 app.js → Arquivo principal da aplicação
+
 
 ====================================================================================================================
 
