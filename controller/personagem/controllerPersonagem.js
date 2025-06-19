@@ -1,5 +1,5 @@
 /************************************************************************************************************
- * Objetivo: Controller responsável pelo CRUD de dados
+ * Objetivo: Controller é a camada responsável pela lógica de negócio
  * Data: 05/06/2025
  * Autor: Douglas Menezes
  * Versão: 1.0

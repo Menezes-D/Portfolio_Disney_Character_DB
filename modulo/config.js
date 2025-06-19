@@ -1,5 +1,5 @@
 /******************************************************************************************************************
- * Objetivo: Arquivo de configuração de mensagens de erros ou acertos
+ * Objetivo: Arquivos auxiliares e mensagens padrão
  * Data: 26/05/2025
  * Autor: Douglas Menezes
  * Versão: 1.0
