@@ -27,6 +27,7 @@ const selectAllCharacter = async function(){
 const selectByQueryCharacter = async function(nome){
     
     // Verifica se o nome está vazio ou inválido (nulo, undefined ou só espaços)
+    // .trim utlizado para remover espaços em branco
     if(!nome || nome.trim() === '')
         return false
    

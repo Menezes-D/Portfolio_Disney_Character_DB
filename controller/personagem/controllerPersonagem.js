@@ -34,6 +34,7 @@ const filtrarPersonagem = async function(nome = ''){
     //console.log('Requisição recebia com:', {nome})
 
     //Verifica se nome está vazio ou contem apenas espaços
+    // .trim utlizado para remover espaços em branco
     if(!nome || nome.trim() === ''){
         return MESSAGE.ERROR_REQUIRED_FIELDS
     }
@@ -58,6 +59,7 @@ const filtrarPersonagem = async function(nome = ''){
 const buscarIdPersonagem = async function(id){
 
     // Verifica se o ID é inválido (vazio, nulo, indefinido ou não numérico)
+    // .trim utlizado para remover espaços em branco
     if(id.trim() === '' || id == null || id == undefined || isNaN(id)){
         return MESSAGE.ERROR_REQUIRED_FIELDS 
     }else{
