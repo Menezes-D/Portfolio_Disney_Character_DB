@@ -40,7 +40,7 @@ O projeto segue a arquitetura MVC (Model - View - Controller) combinada com o pa
 📄 app.js → Arquivo principal da aplicação
 
 
-====================================================================================================================
+=============================================================
 
 🚀 Como Executar o Projeto
 
@@ -72,9 +72,10 @@ O projeto segue a arquitetura MVC (Model - View - Controller) combinada com o pa
     |node app.js
 
 
-====================================================================================================================
+==============================================================
 
 
 
 📝 Licença
+
 Este projeto é acadêmico e de uso livre para fins educacionais.
