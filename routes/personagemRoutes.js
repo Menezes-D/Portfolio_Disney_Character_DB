@@ -14,8 +14,9 @@ const bodyParserJSON = bodyParser.json()
 
 const router = express.Router()
 
+
 //Rota para retornar todos os Personagens do BD
-router.get('/v1/disney/personagem', async function(req, res, next){
+router.get('/v1/disney/personagens', async function(req, res){
 
     //Chama a função que retorna todos os Personagens
     let dadosPersonagem = await controllerPersonagem.listarPersonagens()
@@ -24,8 +25,23 @@ router.get('/v1/disney/personagem', async function(req, res, next){
     res.json(dadosPersonagem)
 })
 
+
+//Rota para Retornar Personagem via Query Params
+router.get('/v1/disney/personagem/filtro', async function(req, res){
+
+    //Recebe a variavel via params
+    let nome = req.query.nome
+
+    //Chama a função para buscar o Personagem
+    let dadosPersonagem = await controllerPersonagem.filtrarPersonagem(nome)
+
+    res.status(dadosPersonagem.status_code)
+    res.json(dadosPersonagem)
+})
+
+
 //Rota para retornar personagem pelo ID
-router.get('/v1/disney/personagem/:id', async function(req, res, next){
+router.get('/v1/disney/personagem/:id', async function(req, res){
 
     //Recebe a variavel via params
     let idPersonagem = req.params.id
@@ -35,6 +51,7 @@ router.get('/v1/disney/personagem/:id', async function(req, res, next){
     res.status(dadosPersonagem.status_code)
     res.json(dadosPersonagem)
 })
+
 
 //Rota para Inserir um novo Personagem
 router.post('/v1/disney/personagem', bodyParserJSON, async function(req, res) {
@@ -50,6 +67,7 @@ router.post('/v1/disney/personagem', bodyParserJSON, async function(req, res) {
     res.json(newCharacter)
 })
 
+
 //Rota para Deletar um Personagem
 router.delete('/v1/disney/personagem/:id', async function(req, res) {
     let idPersonagem = req.params.id
@@ -59,6 +77,7 @@ router.delete('/v1/disney/personagem/:id', async function(req, res) {
     res.status(deletedCharacter.status_code)
     res.json(deletedCharacter)
 })
+
 
 //Rota para Atualizar um Personagem 
 router.put('/v1/disney/personagem/:id', bodyParserJSON, async function(req, res){

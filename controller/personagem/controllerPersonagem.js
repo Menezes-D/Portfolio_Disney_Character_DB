@@ -8,7 +8,7 @@
 //Import do arquivo DAO
 const personagemDAO = require('../../model/DAO/personagem.js')
 //Import do arquivo de mensagens de erro/acerto
-const MESSAGE = require('../../message/config.js')
+const MESSAGE = require('../../modulo/config.js')
 
 //Retornar todos os Personagens do BD
 const listarPersonagens = async function(){
@@ -26,6 +26,31 @@ const listarPersonagens = async function(){
         return personagemJSON
     }else{
         return MESSAGE.ERROR_NOT_FOUND //404
+    }
+}
+
+//Buscar Filme via Query Params (Nome)
+const filtrarPersonagem = async function(nome = ''){
+    //console.log('Requisição recebia com:', {nome})
+
+    //Verifica se nome está vazio ou contem apenas espaços
+    if(!nome || nome.trim() === ''){
+        return MESSAGE.ERROR_REQUIRED_FIELDS
+    }
+
+     // Chama a função DAO que faz a consulta no banco com base no nome
+    let dadosPersonagem = await personagemDAO.selectByQueryCharacter(nome)
+
+    // Se a consulta retornar dados, monta o objeto de resposta com sucesso
+    if(dadosPersonagem){
+        return {
+            status: true,
+            status_code: 200,
+            count: dadosPersonagem.length,
+            character: dadosPersonagem
+        }
+    }else {
+        return MESSAGE.ERROR_NOT_FOUND
     }
 }
 
@@ -123,7 +148,7 @@ const atualizarPersonagem = async function(personagem, id, contentType){
             personagem.especie         == '' || personagem.especie         == null || personagem.especie         == undefined || String(personagem.especie).length > 100        ||      
             personagem.criador         == '' || personagem.criador         == null || personagem.criador         == undefined || String(personagem.criador).length > 100  
         ){
-            return MESSAGE>ERROR_REQUIRED_FIELDS //400
+            return MESSAGE.ERROR_REQUIRED_FIELDS //400
         }else{
         //Verifica se o ID existe no BD
         let dadosPersonagem = await personagemDAO.selectByIdCharacter(id)
@@ -157,5 +182,6 @@ module.exports = {
     buscarIdPersonagem,
     inserirPersonagem,
     deletarPersonagem,
-    atualizarPersonagem
+    atualizarPersonagem,
+    filtrarPersonagem
 }

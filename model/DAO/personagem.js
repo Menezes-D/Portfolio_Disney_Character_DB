@@ -23,7 +23,26 @@ const selectAllCharacter = async function(){
         return false
 }
 
-//Função para Retornar um personagem com base nos Parametros (Nome, Vestimenta)
+//Função para Buscar Personagem pelo Nome(Query Params) 
+const selectByQueryCharacter = async function(nome){
+    
+    // Verifica se o nome está vazio ou inválido (nulo, undefined ou só espaços)
+    if(!nome || nome.trim() === '')
+        return false
+   
+    try {
+       
+        // Uso do operador LIKE que permite buscas parciais (ex: "Mic" encontra "Mickey")
+        let queryCharacter = await prisma.$queryRaw 
+        `select * from tbl_character where nome like ${'%' + nome + '%'}`
+       
+        // Se encontrar personagens, retorna o array de resultados, caso contrario, false
+        return queryCharacter.length > 0 ? queryCharacter : false
+    } catch (error) {
+        console.error('Erro na query:', error)
+        return false
+    }
+}
 
 //Função para Retornar o Personagem com base no ID passado
 const selectByIdCharacter = async function(id) {
@@ -126,5 +145,6 @@ module.exports = {
     selectByIdCharacter,
     insertCharacter,
     deleteCharacter,
-    updateCharacter
+    updateCharacter,
+    selectByQueryCharacter
 }
