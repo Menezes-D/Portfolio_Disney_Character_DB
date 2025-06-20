@@ -95,7 +95,7 @@ const inserirPersonagem = async function(personagem, contentType) {
             personagem.especie         == '' || personagem.especie         == null || personagem.especie         == undefined || String(personagem.especie).length > 100        ||      
             personagem.criador         == '' || personagem.criador         == null || personagem.criador         == undefined || String(personagem.criador).length > 100  
         ){
-            return MESSAGE>ERROR_REQUIRED_FIELDS
+            return MESSAGE.ERROR_REQUIRED_FIELDS
         }else {
             let novoPersonagem = await personagemDAO.insertCharacter(personagem)
 
@@ -187,3 +187,5 @@ module.exports = {
     atualizarPersonagem,
     filtrarPersonagem
 }
+
+
